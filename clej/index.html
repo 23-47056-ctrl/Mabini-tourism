@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover Mabini, Batangas</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {font-family: 'Arial', sans-serif; line-height: 1.6; color: #333;}
+    html {scroll-behavior: smooth; scroll-padding-top: 80px;}
+
+    header {
+      background: #006994;
+      color: white;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {font-size: 20px;}
+    nav ul {list-style: none; display: flex; gap: 20px;}
+    nav a {color: white; text-decoration: none; font-weight: bold;}
+    
+    header img.logo {
+      height: 50px;
+      width: auto;
+      margin-right: 4px;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Banner Section */
+    .banner {
+      background: url('mabini.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+    .banner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+    .banner h2 {
+      font-size: 50px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      animation: fadeDown 1.5s ease-out;
+    }
+    .banner p {
+      font-size: 20px;
+      max-width: 700px;
+      background: rgba(0,0,0,0.4);
+      padding: 15px 25px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 2s ease-out;
+    }
+    .cta {
+      position: relative;
+      z-index: 1;
+    }
+    .cta button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      background: #006994;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+      animation: pulse 2s infinite;
+    }
+    .cta button:hover {
+      background: #004d66;
+      transform: scale(1.05);
+    }
+
+    /* Scroll down arrow */
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      font-size: 32px;
+      animation: bounce 2s infinite;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from {opacity: 0; transform: translateY(-50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+      40% {transform: translateY(-10px);}
+      60% {transform: translateY(-5px);}
+    }
+    @keyframes pulse {
+      0% {box-shadow: 0 0 0 0 rgba(0,105,148,0.7);}
+      70% {box-shadow: 0 0 0 20px rgba(0,105,148,0);}
+      100% {box-shadow: 0 0 0 0 rgba(0,105,148,0);}
+    }
+
+    /* Attractions */
+    .attractions {
+      padding: 50px 20px;
+      background: #f4f4f4;
+      text-align: center;
+    }
+    .attractions h2 {margin-bottom: 15px; font-size: 36px; color: #006994;}
+    .attractions p.tagline {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+      color: #555;
+    }
+    .carousel {
+      display: flex;
+      justify-content: center; /* ✅ center the cards */
+      flex-wrap: wrap;         /* ✅ wrap into rows */
+      gap: 20px;
+      padding-bottom: 20px;
+    }
+    .attraction {
+      flex: 0 0 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .attraction img {
+      width: 100%;
+      height: 200px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .attraction:hover img {transform: scale(1.1);}
+    .attraction h3 {padding: 15px 10px 5px; font-size: 18px;}
+    .attraction p {padding: 0 10px 15px; font-size: 14px; flex-grow: 1;}
+    
+    .attraction button {
+      margin: 10px auto 20px;
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      background: #006994;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .attraction:hover button {
+      background: #004d66;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Map Section */
+    .map {padding: 50px 20px; text-align: center;}
+    .map h2 {margin-bottom: 20px; font-size: 28px;}
+    iframe {width: 100%; height: 400px; border: none; border-radius: 10px;}
+
+    /* Contact Section */
+    .contact {
+      padding: 40px 20px;
+      text-align: center;
+      background: #eaf6fb;
+    }
+    .contact h2 {font-size: 28px; color: #006994; margin-bottom: 15px;}
+    .contact p {font-size: 18px; margin: 5px 0;}
+
+    footer {
+      background: #006994;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    footer a {color: white; margin: 0 10px; text-decoration: none;}
+
+    @media (max-width: 768px) {
+      .banner h2 {font-size: 32px; padding: 0 10px;}
+      .banner p {font-size: 16px; padding: 10px;}
+      .attraction {flex: 0 0 80%;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <img src="Picsart_25-09-29_10-40-37-670.png" alt="mabini seal" class="logo">
+      <h1>Mabini Tourism</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#banner">Home</a></li>
+        <li><a href="#attractions">Attractions</a></li>
+        <li><a href="#map">Map</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Banner Section -->
+  <section class="banner" id="banner">
+    <h2>Explore Paradise in Mabini, Batangas</h2>
+    <p>Discover pristine beaches, thrilling dives, breathtaking hikes, and delicious local flavors — all in one coastal gem.</p>
+    <div class="cta">
+      <button onclick="document.getElementById('attractions').scrollIntoView({behavior: 'smooth'})">
+        Plan Your Visit
+      </button>
+    </div>
+    <div class="scroll-down" onclick="document.getElementById('attractions').scrollIntoView({behavior: 'smooth'})">⬇️</div>
+  </section>
+
+  <!-- Top Attractions -->
+  <section class="attractions" id="attractions">
+    <h2>Top Attractions</h2>
+    <p class="tagline">From sandy beaches to mouthwatering local food, Mabini offers adventures and flavors you’ll never forget.</p>
+    <div class="carousel">
+      <div class="attraction">
+        <img src="14791f4a-1871-41bb-b5ad-8a6fc5bdc1e7.jpg" alt="beaches">
+        <h3>🌊 Beaches</h3>
+        <p>Relax on Mabini’s pristine sandy shores, perfect for swimming, sunset viewing, and peaceful getaways.</p>
+        <button onclick="document.getElementById('map').scrollIntoView({behavior: 'smooth'})">Explore</button>
+      </div>
+
+      <div class="attraction">
+        <img src="diving.jpg" alt="Diving">
+        <h3>🤿 Diving</h3>
+        <p>Experience Anilao’s crystal-clear waters, home to vibrant coral reefs and diverse marine life for divers of all levels.</p>
+        <button onclick="document.getElementById('map').scrollIntoView({behavior: 'smooth'})">Explore</button>
+      </div>
+
+      <div class="attraction">
+        <img src="gulugod.jpg" alt="Mt. Gulugod Baboy">
+        <h3>🥾 Mt. Gulugod Baboy</h3>
+        <p>Hike up for a breathtaking view of Batangas Bay and nearby islands.</p>
+        <button onclick="document.getElementById('map').scrollIntoView({behavior: 'smooth'})">Explore</button>
+      </div>
+
+      <div class="attraction">
+        <img src="lomi.jpg" alt="Batangas Lomi">
+        <h3>🍜 Batangas Lomi</h3>
+        <p>Try the delicious Batangas Lomi — a must-taste local delicacy.</p>
+        <button onclick="document.getElementById('map').scrollIntoView({behavior: 'smooth'})">Explore</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="map" id="map">
+    <h2>Find Us Here</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61752.28773738247!2d120.8934!3d13.7566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd0803c9f516c5%3A0x8f7a0aefc69bbf6a!2sMabini%2C%20Batangas!5e0!3m2!1sen!2sph!4v1694330246942!5m2!1sen!2sph"></iframe>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>📞 Tourism Office: +63 912 345 6789</p>
+    <p>📧 Email: tourism@mabini.gov.ph</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Discover Mabini | Follow us:
+      <a href="https://www.facebook.com/profile.php?id=100088250528216">Facebook</a> |
+      <a href="https://www.instagram.com/mabinitourism/">Instagram</a> |
+      <a href="#">Twitter</a>
+    </p>
+  </footer>
+</body>
+</html>
