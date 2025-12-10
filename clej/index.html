@@ -35,12 +35,17 @@
       gap: 10px;
     }
 
-    /* Mobile Menu Toggle */
+    /* Mobile Menu Toggle - Positioned in top-right corner */
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
-      padding: 5px;
+      padding: 8px;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1001;
     }
     .menu-toggle span {
       height: 3px;
@@ -234,6 +239,7 @@
       /* Header & Navigation */
       header {
         padding: 12px 15px;
+        position: relative;
       }
       
       .header-left h1 {
@@ -244,9 +250,10 @@
         display: flex;
       }
       
+      /* Hide desktop navigation on mobile */
       nav ul {
         position: fixed;
-        top: 80px;
+        top: 70px;
         left: 0;
         width: 100%;
         background: #006994;
@@ -275,8 +282,13 @@
       
       nav ul li a {
         display: block;
-        padding: 10px 0;
+        padding: 12px 0;
         font-size: 18px;
+      }
+      
+      /* Ensure header content doesn't overlap with hamburger */
+      .header-left {
+        max-width: calc(100% - 50px);
       }
       
       /* Banner */
@@ -390,6 +402,19 @@
         height: 40px;
       }
       
+      .menu-toggle {
+        right: 10px;
+        padding: 6px;
+      }
+      
+      .menu-toggle span {
+        width: 22px;
+      }
+      
+      nav ul {
+        top: 65px;
+      }
+      
       .attractions h2 {
         font-size: 24px;
       }
@@ -415,7 +440,7 @@
       <h1>Mabini Tourism</h1>
     </div>
     
-    <!-- Mobile Menu Toggle -->
+    <!-- Mobile Menu Toggle - Now positioned top-right corner -->
     <div class="menu-toggle" id="menuToggle">
       <span></span>
       <span></span>
