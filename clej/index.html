@@ -12,7 +12,7 @@
     header {
       background: #006994;
       color: white;
-      padding: 15px 30px;
+      padding: 15px 20px;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -35,6 +35,22 @@
       gap: 10px;
     }
 
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 3px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
     /* Banner Section */
     .banner {
       background: url('mabini.jpg') no-repeat center center/cover;
@@ -46,6 +62,7 @@
       color: white;
       text-align: center;
       position: relative;
+      padding: 0 15px;
     }
     .banner::before {
       content: "";
@@ -137,8 +154,8 @@
     }
     .carousel {
       display: flex;
-      justify-content: center; /* ✅ center the cards */
-      flex-wrap: wrap;         /* ✅ wrap into rows */
+      justify-content: center;
+      flex-wrap: wrap;
       gap: 20px;
       padding-bottom: 20px;
     }
@@ -175,13 +192,12 @@
       border-radius: 5px;
       cursor: pointer;
       transition: all 0.3s;
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 1;
+      transform: translateY(0);
     }
     .attraction:hover button {
       background: #004d66;
-      opacity: 1;
-      transform: translateY(0);
+      transform: scale(1.05);
     }
 
     /* Map Section */
@@ -205,11 +221,190 @@
       padding: 20px;
     }
     footer a {color: white; margin: 0 10px; text-decoration: none;}
-
+    
+    /* Tablet Styles */
+    @media (max-width: 992px) {
+      .banner h2 {font-size: 42px;}
+      .banner p {font-size: 18px;}
+      .attraction {flex: 0 0 calc(50% - 20px);}
+    }
+    
+    /* Mobile Styles */
     @media (max-width: 768px) {
-      .banner h2 {font-size: 32px; padding: 0 10px;}
-      .banner p {font-size: 16px; padding: 10px;}
-      .attraction {flex: 0 0 80%;}
+      /* Header & Navigation */
+      header {
+        padding: 12px 15px;
+      }
+      
+      .header-left h1 {
+        font-size: 16px;
+      }
+      
+      .menu-toggle {
+        display: flex;
+      }
+      
+      nav ul {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #006994;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 15px;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 999;
+      }
+      
+      nav ul.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      nav ul li {
+        width: 100%;
+        text-align: center;
+      }
+      
+      nav ul li a {
+        display: block;
+        padding: 10px 0;
+        font-size: 18px;
+      }
+      
+      /* Banner */
+      .banner h2 {
+        font-size: 32px;
+        padding: 0 10px;
+        margin-bottom: 15px;
+      }
+      
+      .banner p {
+        font-size: 16px;
+        padding: 12px 15px;
+        margin-bottom: 25px;
+      }
+      
+      .cta button {
+        padding: 12px 24px;
+        font-size: 16px;
+      }
+      
+      .scroll-down {
+        font-size: 28px;
+        bottom: 15px;
+      }
+      
+      /* Attractions */
+      .attractions {
+        padding: 40px 15px;
+      }
+      
+      .attractions h2 {
+        font-size: 28px;
+      }
+      
+      .attractions p.tagline {
+        font-size: 16px;
+        margin-bottom: 25px;
+      }
+      
+      .carousel {
+        gap: 15px;
+      }
+      
+      .attraction {
+        flex: 0 0 100%;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+      
+      .attraction img {
+        height: 180px;
+      }
+      
+      /* Map */
+      .map {
+        padding: 40px 15px;
+      }
+      
+      .map h2 {
+        font-size: 24px;
+      }
+      
+      iframe {
+        height: 300px;
+      }
+      
+      /* Contact */
+      .contact {
+        padding: 30px 15px;
+      }
+      
+      .contact h2 {
+        font-size: 24px;
+      }
+      
+      .contact p {
+        font-size: 16px;
+      }
+      
+      /* Footer */
+      footer {
+        padding: 15px;
+      }
+      
+      footer p {
+        font-size: 14px;
+      }
+      
+      footer a {
+        display: inline-block;
+        margin: 5px;
+      }
+    }
+    
+    /* Small Mobile Styles */
+    @media (max-width: 480px) {
+      .banner h2 {
+        font-size: 28px;
+      }
+      
+      .banner p {
+        font-size: 15px;
+        padding: 10px 12px;
+      }
+      
+      .header-left h1 {
+        font-size: 14px;
+      }
+      
+      header img.logo {
+        height: 40px;
+      }
+      
+      .attractions h2 {
+        font-size: 24px;
+      }
+      
+      .map h2 {
+        font-size: 22px;
+      }
+      
+      .contact h2 {
+        font-size: 22px;
+      }
+      
+      iframe {
+        height: 250px;
+      }
     }
   </style>
 </head>
@@ -219,8 +414,16 @@
       <img src="Picsart_25-09-29_10-40-37-670.png" alt="mabini seal" class="logo">
       <h1>Mabini Tourism</h1>
     </div>
+    
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
     <nav>
-      <ul>
+      <ul id="navMenu">
         <li><a href="#banner">Home</a></li>
         <li><a href="#attractions">Attractions</a></li>
         <li><a href="#map">Map</a></li>
@@ -244,19 +447,19 @@
   <!-- Top Attractions -->
   <section class="attractions" id="attractions">
     <h2>Top Attractions</h2>
-    <p class="tagline">From sandy beaches to mouthwatering local food, Mabini offers adventures and flavors you’ll never forget.</p>
+    <p class="tagline">From sandy beaches to mouthwatering local food, Mabini offers adventures and flavors you'll never forget.</p>
     <div class="carousel">
       <div class="attraction">
         <img src="14791f4a-1871-41bb-b5ad-8a6fc5bdc1e7.jpg" alt="beaches">
         <h3>🌊 Beaches</h3>
-        <p>Relax on Mabini’s pristine sandy shores, perfect for swimming, sunset viewing, and peaceful getaways.</p>
+        <p>Relax on Mabini's pristine sandy shores, perfect for swimming, sunset viewing, and peaceful getaways.</p>
         <button onclick="document.getElementById('map').scrollIntoView({behavior: 'smooth'})">Explore</button>
       </div>
 
       <div class="attraction">
         <img src="diving.jpg" alt="Diving">
         <h3>🤿 Diving</h3>
-        <p>Experience Anilao’s crystal-clear waters, home to vibrant coral reefs and diverse marine life for divers of all levels.</p>
+        <p>Experience Anilao's crystal-clear waters, home to vibrant coral reefs and diverse marine life for divers of all levels.</p>
         <button onclick="document.getElementById('map').scrollIntoView({behavior: 'smooth'})">Explore</button>
       </div>
 
@@ -296,5 +499,65 @@
       <a href="#">Twitter</a>
     </p>
   </footer>
+
+  <script>
+    // Mobile menu toggle functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      
+      // Animate menu toggle icon
+      const spans = menuToggle.querySelectorAll('span');
+      if (navMenu.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        const spans = menuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+        const spans = menuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+    
+    // Make attraction buttons always visible on mobile
+    function checkScreenSize() {
+      if (window.innerWidth <= 768) {
+        document.querySelectorAll('.attraction button').forEach(button => {
+          button.style.opacity = '1';
+          button.style.transform = 'translateY(0)';
+        });
+      }
+    }
+    
+    // Initial check
+    checkScreenSize();
+    
+    // Check on resize
+    window.addEventListener('resize', checkScreenSize);
+  </script>
 </body>
 </html>
